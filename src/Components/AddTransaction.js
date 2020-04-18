@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,8 +7,22 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { AppContext } from "../context/AppState";
 
 const AddTransaction = () => {
+  const [text, setText] = useState("");
+  const [amount, setAmount] = useState(0);
+  const { addTransaction } = useContext(AppContext);
+
+  const onPress = () => {
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000000),
+      text,
+      amount,
+    };
+    console.log(newTransaction);
+    addTransaction(newTransaction);
+  };
   return (
     <View>
       <Text style={styles.newTransaction}>Add New Transaction</Text>
@@ -17,6 +31,7 @@ const AddTransaction = () => {
         style={styles.textInput}
         placeholderTextColor="grey"
         placeholder="Enter Text"
+        onChangeText={(textValue) => setText(textValue)}
       />
       <Text style={styles.text}>Amount :</Text>
       <TextInput
@@ -24,8 +39,9 @@ const AddTransaction = () => {
         placeholder="expense(-100) or income(+100)"
         placeholderTextColor="grey"
         keyboardType="number-pad"
+        onChangeText={(amountValue) => setAmount(amountValue)}
       />
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={styles.buttonText}>Add transaction</Text>
       </TouchableOpacity>
     </View>

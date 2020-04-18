@@ -1,13 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import AddTransaction from './src/Components/AddTransaction'
+import { AppProvider } from './src/context/AppState'
+import {TransactionList} from './src/Components/TransactionList'
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome</Text>
-      <AddTransaction/>
-    </View>
+    <AppProvider>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Welcome</Text>
+        <AddTransaction/>
+        <TransactionList/>
+      </View>
+    </AppProvider>
   )
 }
 
