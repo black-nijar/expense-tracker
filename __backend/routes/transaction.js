@@ -29,7 +29,19 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", (req, res) => {
-  res.send("Deleted");
+// DELETE tranaction
+router.delete("/:id", async (req, res) => {
+  try {
+    let tranaction = await Transaction.findById(req.params.id);
+    if (!tranaction) {
+      res.status(404).json({ msg: "Transaction not found" });
+    }
+    await Transaction.findByIdAndRemove(req.params.id);
+    res.json({ msg: "Transaction deleted" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ msg: "Server error" });
+  }
 });
+
 module.exports = router;
