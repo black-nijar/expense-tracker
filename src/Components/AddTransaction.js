@@ -34,7 +34,7 @@ const AddTransaction = () => {
       <Text style={styles.text}>Text :</Text>
       <TextInput
         autoFocus
-        value={text}
+        defaultValue={text}
         style={styles.textInput}
         placeholderTextColor="grey"
         placeholder="Enter Text"
@@ -42,7 +42,7 @@ const AddTransaction = () => {
       />
       <Text style={styles.text}>Amount :</Text>
       <TextInput
-        value={amount}
+        defaultValue={amount}
         style={styles.textInput}
         placeholder="expense(-100) or income(+100)"
         placeholderTextColor="grey"

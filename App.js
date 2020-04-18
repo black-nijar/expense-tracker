@@ -3,12 +3,14 @@ import { StyleSheet, Text, View } from 'react-native'
 import AddTransaction from './src/Components/AddTransaction'
 import { AppProvider } from './src/context/AppState'
 import {TransactionList} from './src/Components/TransactionList'
+import Balance from './src/Components/Balance'
 
 const App = () => {
   return (
     <AppProvider>
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome</Text>
+        <Text style={styles.welcome}>Expense Tracker</Text>
+        <Balance/>
         <AddTransaction/>
         <TransactionList/>
       </View>
