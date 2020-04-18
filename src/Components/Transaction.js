@@ -1,8 +1,13 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { AppContext } from "../context/AppState";
 
 const Transaction = ({ transaction }) => {
+  const { deleteTransaction } = useContext(AppContext)
   const sign = transaction.amount < 0 ? "-" : "+";
+  const onDelete = (id) => {
+    deleteTransaction(id);
+  };
   return (
     <View styles={transaction.amount < 0 ? "minus" : "plus"}>
       <View style={styles.transaction}>
@@ -11,6 +16,9 @@ const Transaction = ({ transaction }) => {
           {sign}
           {Math.abs(transaction.amount)}
         </Text>
+        <TouchableOpacity style={styles.deleteButton} onPress={() => onDelete(transaction.id)}>
+          <Text style={styles.deleteText}>X</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -24,11 +32,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     width: "100%",
+    padding: 10,
   },
   text: {
     fontSize: 20,
     padding: 4,
     borderBottomColor: "blue",
     borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  deleteButton: {
+    color: "red",
+    backgroundColor: "red",
+    padding: 5,
+  },
+  deleteText: {
+    color: "white",
   },
 });

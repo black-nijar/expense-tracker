@@ -1,10 +1,10 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import { ADD_TRANSACTION } from "./actionTypes";
+import { ADD_TRANSACTION, DELETE_TRANSACTION } from "./actionTypes";
 
 // InitialState
 const initState = {
-  transaction: [],
+  transactions: [],
 };
 
 // Create context
@@ -21,12 +21,20 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  // Delete
+  const deleteTransaction = (id) => {
+    dispatch({
+      type: DELETE_TRANSACTION,
+      payload: id,
+    });
+  };
   // Return
   return (
     <AppContext.Provider
       value={{
-        transaction: state.transaction,
+        transactions: state.transactions,
         addTransaction,
+        deleteTransaction,  
       }}
     >
       {children}

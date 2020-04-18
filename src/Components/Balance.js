@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from "react-native";
 import { AppContext } from "../context/AppState";
 
 const Balance = () => {
-  const { transaction } = useContext(AppContext);
+  const { transactions } = useContext(AppContext);
 
-  const amounts = transaction.map((transaction) =>
+  const amounts = transactions.map((transaction) =>
     parseInt(transaction.amount)
   );
 
