@@ -4,11 +4,12 @@ import {
   Text,
   View,
   TextInput,
+  Button,
   TouchableOpacity,
 } from "react-native";
 import { AppContext } from "../context/AppState";
 
-const AddTransaction = () => {
+const AddTransaction = ({navigation}) => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
   const { addTransaction } = useContext(AppContext);
@@ -25,10 +26,11 @@ const AddTransaction = () => {
       addTransaction(newTransaction);
       setAmount(0);
       setText("");
+      navigation.navigate("TransactionList")
     }
   };
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.newTransaction}>Add New Transaction</Text>
       <Text style={styles.text}>Text :</Text>
       <TextInput
@@ -87,4 +89,7 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
   },
+  container: {
+    backgroundColor: "white"
+  }
 });

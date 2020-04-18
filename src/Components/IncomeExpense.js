@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     borderWidth: 0.5,
+    marginBottom: 10,
   },
   income: {
     color: "green",
