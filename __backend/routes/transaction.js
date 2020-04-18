@@ -2,11 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Transaction = require("../models/Transaction");
 
-// Create
+// POST Transaction
 router.post("/", async (req, res) => {
   try {
     const { text, amount } = req.body;
-    console.log('DETAILS :', text, amount)
     const newTransaction = new Transaction({
       text,
       amount,
@@ -19,8 +18,15 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", (req, res) => {
-  res.send("History");
+// GET Transaction
+router.get("/", async (req, res) => {
+  try {
+    let transaction = await Transaction.find({});
+    res.json(transaction);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ msg: "Server error" });
+  }
 });
 
 router.delete("/:id", (req, res) => {
