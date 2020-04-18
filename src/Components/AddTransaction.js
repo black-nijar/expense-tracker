@@ -4,7 +4,6 @@ import {
   Text,
   View,
   TextInput,
-  Button,
   TouchableOpacity,
 } from "react-native";
 import { AppContext } from "../context/AppState";
@@ -15,19 +14,27 @@ const AddTransaction = () => {
   const { addTransaction } = useContext(AppContext);
 
   const onPress = () => {
-    const newTransaction = {
-      id: Math.floor(Math.random() * 100000000),
-      text,
-      amount,
-    };
-    console.log(newTransaction);
-    addTransaction(newTransaction);
+    if (!text || !amount) {
+      alert("Add Details");
+    } else {
+      const newTransaction = {
+        id: Math.floor(Math.random() * 100000000),
+        text,
+        amount,
+      };
+      console.log(newTransaction);
+      addTransaction(newTransaction);
+      setAmount(0);
+      setText("");
+    }
   };
   return (
     <View>
       <Text style={styles.newTransaction}>Add New Transaction</Text>
       <Text style={styles.text}>Text :</Text>
       <TextInput
+        autoFocus
+        value={text}
         style={styles.textInput}
         placeholderTextColor="grey"
         placeholder="Enter Text"
@@ -35,6 +42,7 @@ const AddTransaction = () => {
       />
       <Text style={styles.text}>Amount :</Text>
       <TextInput
+        value={amount}
         style={styles.textInput}
         placeholder="expense(-100) or income(+100)"
         placeholderTextColor="grey"
