@@ -9,13 +9,13 @@ import {
 } from "react-native";
 import { AppContext } from "../context/AppState";
 
-const AddTransaction = ({navigation}) => {
+const AddTransaction = ({ navigation }) => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(0);
   const { addTransaction } = useContext(AppContext);
 
   const onPress = () => {
-    if (!text || !amount) {
+    if (!text.trim() || !amount) {
       alert("Add Details");
     } else {
       const newTransaction = {
@@ -26,7 +26,7 @@ const AddTransaction = ({navigation}) => {
       addTransaction(newTransaction);
       setAmount(0);
       setText("");
-      navigation.navigate("TransactionList")
+      navigation.navigate("TransactionList");
     }
   };
   return (
@@ -57,7 +57,7 @@ const AddTransaction = ({navigation}) => {
   );
 };
 
-export default AddTransaction;
+export default React.memo(AddTransaction);
 
 const styles = StyleSheet.create({
   newTransaction: {
@@ -90,6 +90,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   container: {
-    backgroundColor: "white"
-  }
+    backgroundColor: "white",
+  },
 });

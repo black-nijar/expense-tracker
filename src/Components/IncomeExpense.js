@@ -32,7 +32,7 @@ const IncomeExpense = () => {
   );
 };
 
-export default IncomeExpense;
+export default React.memo(IncomeExpense);
 
 const styles = StyleSheet.create({
   amount: {

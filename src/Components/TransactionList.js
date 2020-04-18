@@ -9,8 +9,8 @@ export const TransactionList = ({ navigation }) => {
   const { transactions } = useContext(AppContext);
   return (
     <View>
-    <Balance/>
-    <IncomeExpense/>
+      <Balance />
+      <IncomeExpense />
       <Button
         title="Add transaction"
         onPress={() => navigation.navigate("Home")}
@@ -32,6 +32,5 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: "center",
     fontSize: 20,
-    
   },
 });

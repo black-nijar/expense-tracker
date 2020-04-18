@@ -11,7 +11,7 @@ const Balance = () => {
 
   const total = amounts.reduce((acc, item) => acc + item, 0).toFixed(2);
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.balance}>Your Balance is Rs.{total}</Text>
     </View>
   );
@@ -25,5 +25,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
     marginBottom: 10,
+  },
+  container: {
+    backgroundColor: "white",
   },
 });

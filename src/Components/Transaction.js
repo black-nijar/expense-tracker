@@ -27,7 +27,7 @@ const Transaction = ({ transaction }) => {
   );
 };
 
-export default Transaction;
+export default React.memo(Transaction);
 
 const styles = StyleSheet.create({
   transaction: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     width: "100%",
     padding: 10,
-    backgroundColor: 'white'
+    backgroundColor: "white",
   },
   text: {
     fontSize: 20,
