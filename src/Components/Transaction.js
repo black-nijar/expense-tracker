@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { AppContext } from "../context/AppState";
 
 const Transaction = ({ transaction }) => {
-  const { deleteTransaction } = useContext(AppContext)
+  const { deleteTransaction } = useContext(AppContext);
   const sign = transaction.amount < 0 ? "-" : "+";
   const onDelete = (id) => {
     deleteTransaction(id);
@@ -16,7 +16,10 @@ const Transaction = ({ transaction }) => {
           {sign}
           {Math.abs(transaction.amount)}
         </Text>
-        <TouchableOpacity style={styles.deleteButton} onPress={() => onDelete(transaction.id)}>
+        <TouchableOpacity
+          style={styles.deleteButton}
+          onPress={() => onDelete(transaction.id)}
+        >
           <Text style={styles.deleteText}>X</Text>
         </TouchableOpacity>
       </View>

@@ -4,6 +4,7 @@ import AddTransaction from './src/Components/AddTransaction'
 import { AppProvider } from './src/context/AppState'
 import {TransactionList} from './src/Components/TransactionList'
 import Balance from './src/Components/Balance'
+import IncomeExpense from './src/Components/IncomeExpense'
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <View style={styles.container}>
         <Text style={styles.welcome}>Expense Tracker</Text>
         <Balance/>
+        <IncomeExpense/>
         <AddTransaction/>
         <TransactionList/>
       </View>

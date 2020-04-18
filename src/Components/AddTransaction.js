@@ -32,7 +32,7 @@ const AddTransaction = () => {
       <Text style={styles.newTransaction}>Add New Transaction</Text>
       <Text style={styles.text}>Text :</Text>
       <TextInput
-        autoFocus
+        autoFocus={true}
         defaultValue={text}
         style={styles.textInput}
         placeholderTextColor="grey"

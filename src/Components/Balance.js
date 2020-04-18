@@ -21,7 +21,9 @@ export default Balance;
 
 const styles = StyleSheet.create({
   balance: {
-    textAlign: 'center',
-    fontSize: 20 
-  }
+    textAlign: "center",
+    fontSize: 20,
+    marginTop: 10,
+    marginBottom: 10,
+  },
 });
