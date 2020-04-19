@@ -1,12 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../context/AppState";
 import { View, FlatList, Text, StyleSheet, Button } from "react-native";
 import Transaction from "./Transaction";
 import Balance from "./Balance";
 import IncomeExpense from "./IncomeExpense";
+import Test from "./Test";
 
 export const TransactionList = ({ navigation }) => {
-  const { transactions } = useContext(AppContext);
+  const { transactions, getTransaction } = useContext(AppContext);
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/api/transactions')
+  //   .then(res => console.log(res))
+  //   .catch(err => err)
+  //   // Get transaction
+  //  // getTransaction()
+  // },[])
   return (
     <View>
       <Balance />

@@ -19,9 +19,9 @@ router.post("/", async (req, res) => {
 });
 
 // GET Transaction
-router.get("/", async (req, res) => {
+router.get("/", async (req, res,) => {
   try {
-    let transaction = await Transaction.find({});
+    let transaction = await Transaction.find({}).sort({ date: -1 });
     res.json(transaction);
   } catch (error) {
     console.error(error.message);

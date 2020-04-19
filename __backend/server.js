@@ -1,15 +1,19 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const connectDB = require('./config/db');
+const cors = require("cors");
+
+const connectDB = require("./config/db");
 
 // Connect DB
 connectDB();
-app.use(express.json({ extended: false }))
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }))
 
 // Routes
-app.use('/api/transaction', require('./routes/transaction'))
+app.use("/api/transactions", require("./routes/transaction"));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 // Listening port
-app.listen(PORT, () => console.log(`Server running port ${PORT}`))
+app.listen(PORT, () => console.log(`Server running port ${PORT}`));
