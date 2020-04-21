@@ -21,10 +21,10 @@ router.post("/", async (req, res) => {
 // GET Transaction
 router.get("/", async (req, res,) => {
   try {
-    let transaction = await Transaction.find({}).sort({ date: -1 });
+    let transaction = await Transaction.find().sort({ date: -1 });
     res.json(transaction);
-  } catch (error) {
-    console.error(error.message);
+  } catch (err) {
+    console.error(err.message);
     res.status(500).json({ msg: "Server error" });
   }
 });

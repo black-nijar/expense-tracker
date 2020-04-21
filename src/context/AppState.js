@@ -23,38 +23,51 @@ export const AppProvider = ({ children }) => {
   // GET Contacts
   const getTransaction = async () => {
     try {
-      await fetch("http://localhost:5000/api/transactions").then((res) => {
-        dispatch({
-          type: GET_TRANSACTIONS,
-          payload: res.data,
+      await axios
+        .get("http://192.168.1.8:4000/api/transactions")
+        .then((res) => {
+          //  console.log('RES :', res)
+          dispatch({
+            type: GET_TRANSACTIONS,
+            payload: res.data,
+          });
         });
-      });
     } catch (error) {
       console.log("Err", error);
     }
   };
-  const addTransaction = (transaction) => {
+  const addTransaction = async (transaction) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
-    axios
-      .post("http://localhost:5000/api/transactions", transaction, config)
-      .then((res) => res.data)
-      .catch((err) => err);
-    dispatch({
-      type: ADD_TRANSACTION,
-      payload: transaction,
-    });
+    try {
+      await axios
+        .post("http://192.168.1.8:4000/api/transactions", transaction, config)
+        .then((res) => res.data)
+        .catch((err) => err);
+      dispatch({
+        type: ADD_TRANSACTION,
+        payload: transaction,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Delete
-  const deleteTransaction = (id) => {
-    dispatch({
-      type: DELETE_TRANSACTION,
-      payload: id,
-    });
+  const deleteTransaction = async (id) => {
+    console.log("ID :", id);
+    try {
+      await axios.delete(`http://192.168.1.8:4000/api/transactions/${id}`);
+      dispatch({
+        type: DELETE_TRANSACTION,
+        payload: id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
   // Return
   return (

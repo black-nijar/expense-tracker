@@ -3,6 +3,7 @@ import { ADD_TRANSACTION, DELETE_TRANSACTION, GET_TRANSACTIONS } from "./actionT
 export default (state, action) => {
   switch (action.type) {
     case GET_TRANSACTIONS:
+      console.log(action.payload)
       return {
         ...state,
         transactions: action.payload

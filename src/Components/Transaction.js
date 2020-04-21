@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { AppContext } from "../context/AppState";
 
 const Transaction = ({ transaction }) => {
-  const { deleteTransaction } = useContext(AppContext);
+  const { deleteTransaction, getTransaction } = useContext(AppContext);
+  useEffect(() => {
+  //  getTransaction();
+  },[]);
   const sign = transaction.amount < 0 ? "-" : "+";
   const onDelete = (id) => {
+    console.log(id);
     deleteTransaction(id);
   };
   return (
@@ -18,7 +22,7 @@ const Transaction = ({ transaction }) => {
         </Text>
         <TouchableOpacity
           style={styles.deleteButton}
-          onPress={() => onDelete(transaction.id)}
+          onPress={() => onDelete(transaction._id)}
         >
           <Text style={styles.deleteText}>X</Text>
         </TouchableOpacity>

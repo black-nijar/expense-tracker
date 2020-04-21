@@ -1,16 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import AddTransaction from './src/Components/AddTransaction'
+import { StyleSheet, View } from 'react-native'
 import { AppProvider } from './src/context/AppState'
-import {TransactionList} from './src/Components/TransactionList'
-import Balance from './src/Components/Balance'
-import IncomeExpense from './src/Components/IncomeExpense'
+
+
 import NavigateScreen from './src/Navigate/NavigateScreen'
+import Test from './src/Components/Test'
 
 const App = () => {
   return (
     <AppProvider>
       <View style={styles.container}>
+      <Test/>
         <NavigateScreen/>
       </View>
     </AppProvider>

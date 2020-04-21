@@ -4,17 +4,16 @@ import { View, FlatList, Text, StyleSheet, Button } from "react-native";
 import Transaction from "./Transaction";
 import Balance from "./Balance";
 import IncomeExpense from "./IncomeExpense";
-import Test from "./Test";
+import Axios from "axios";
 
 export const TransactionList = ({ navigation }) => {
   const { transactions, getTransaction } = useContext(AppContext);
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/api/transactions')
-  //   .then(res => console.log(res))
-  //   .catch(err => err)
-  //   // Get transaction
-  //  // getTransaction()
-  // },[])
+
+  useEffect(() => {
+    // Get transaction
+    getTransaction();
+    //eslint-disable-next-line 
+  }, []);
   return (
     <View>
       <Balance />
@@ -27,9 +26,9 @@ export const TransactionList = ({ navigation }) => {
       <FlatList
         data={transactions}
         renderItem={({ item }) => (
-          <Transaction key={item.id} transaction={item} />
+          <Transaction key={item._id} transaction={item} />
         )}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item._id}
       />
     </View>
   );
