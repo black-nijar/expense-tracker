@@ -33,6 +33,5 @@
   },
   "jest": {
     "preset": "react-native"
-  },
-  "proxy": "http://localhost:4000"
+  }
 }

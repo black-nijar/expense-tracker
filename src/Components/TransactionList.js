@@ -4,7 +4,6 @@ import { View, FlatList, Text, StyleSheet, Button } from "react-native";
 import Transaction from "./Transaction";
 import Balance from "./Balance";
 import IncomeExpense from "./IncomeExpense";
-import Axios from "axios";
 
 export const TransactionList = ({ navigation }) => {
   const { transactions, getTransaction } = useContext(AppContext);
@@ -12,8 +11,9 @@ export const TransactionList = ({ navigation }) => {
   useEffect(() => {
     // Get transaction
     getTransaction();
-    //eslint-disable-next-line 
+    //eslint-disable-next-line
   }, []);
+
   return (
     <View>
       <Balance />

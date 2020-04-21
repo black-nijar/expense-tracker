@@ -1,32 +1,33 @@
 import React, { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { AppContext } from "../context/AppState";
+import { numberWithCommas } from "../Components/Test";
 
 const IncomeExpense = () => {
   const { transactions } = useContext(AppContext);
 
-  const amounts = transactions.map((transaction) =>
-    parseInt(transaction.amount)
-  );
+  const amounts = transactions.map((transaction) => transaction.amount);
+
   // Income
   const income = amounts
     .filter((item) => item > 0)
-    .reduce((acc, item) => acc + item, 0)
+    .reduce((acc, item) => acc += item, 0)
     .toFixed(2);
 
   // Expense
   const expense = (
-    amounts.filter((item) => item < 0).reduce((acc, item) => acc + item, 0) * -1
+    amounts.filter((item) => item < 0).reduce((acc, item) => acc += item, 0) * -1
   ).toFixed(2);
+
   return (
     <View style={styles.amount}>
       <View>
         <Text style={styles.text}>Income</Text>
-        <Text style={styles.income}>Rs.{income}</Text>
+        <Text style={styles.income}>Rs.{numberWithCommas(income)}</Text>
       </View>
       <View>
         <Text style={styles.text}>Expense</Text>
-        <Text style={styles.expense}> Rs.{expense}</Text>
+        <Text style={styles.expense}> Rs.{numberWithCommas(expense)}</Text>
       </View>
     </View>
   );

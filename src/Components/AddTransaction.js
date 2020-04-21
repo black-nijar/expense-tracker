@@ -4,7 +4,6 @@ import {
   Text,
   View,
   TextInput,
-  Button,
   TouchableOpacity,
 } from "react-native";
 import { AppContext } from "../context/AppState";
@@ -19,7 +18,7 @@ const AddTransaction = ({ navigation }) => {
       alert("Add Details");
     } else {
       const newTransaction = {
-       // id: Math.floor(Math.random() * 100000000),
+        // id: Math.floor(Math.random() * 100000000),
         text,
         amount,
       };
@@ -43,7 +42,6 @@ const AddTransaction = ({ navigation }) => {
       />
       <Text style={styles.text}>Amount :</Text>
       <TextInput
-    
         style={styles.textInput}
         placeholder="expense(-100) or income(+100)"
         placeholderTextColor="grey"

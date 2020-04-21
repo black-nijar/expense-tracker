@@ -23,15 +23,11 @@ export const AppProvider = ({ children }) => {
   // GET Contacts
   const getTransaction = async () => {
     try {
-      await axios
-        .get("http://192.168.1.8:4000/api/transactions")
-        .then((res) => {
-          //  console.log('RES :', res)
-          dispatch({
-            type: GET_TRANSACTIONS,
-            payload: res.data,
-          });
-        });
+      const res = await axios.get("http://192.168.1.8:4000/api/transactions");
+      dispatch({
+        type: GET_TRANSACTIONS,
+        payload: res.data,
+      });
     } catch (error) {
       console.log("Err", error);
     }
@@ -43,13 +39,14 @@ export const AppProvider = ({ children }) => {
       },
     };
     try {
-      await axios
-        .post("http://192.168.1.8:4000/api/transactions", transaction, config)
-        .then((res) => res.data)
-        .catch((err) => err);
+      const res = await axios.post(
+        "http://192.168.1.8:4000/api/transactions",
+        transaction,
+        config
+      );
       dispatch({
         type: ADD_TRANSACTION,
-        payload: transaction,
+        payload: res.data,
       });
     } catch (error) {
       console.log(error);

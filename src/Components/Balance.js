@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { AppContext } from "../context/AppState";
+import { numberWithCommas } from "..//Components/Test";
 
 const Balance = () => {
   const { transactions } = useContext(AppContext);
@@ -9,10 +10,12 @@ const Balance = () => {
     parseInt(transaction.amount)
   );
 
-  const total = amounts.reduce((acc, item) => acc + item, 0).toFixed(2);
+  const total = amounts.reduce((acc, item) => acc += item, 0).toFixed(2);
   return (
     <View style={styles.container}>
-      <Text style={styles.balance}>Your Balance is Rs.{total}</Text>
+      <Text style={styles.balance}>
+        Your Balance is Rs.{numberWithCommas(total)}
+      </Text>
     </View>
   );
 };

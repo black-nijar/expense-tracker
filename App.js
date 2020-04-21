@@ -1,23 +1,19 @@
-import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import { AppProvider } from './src/context/AppState'
-
-
-import NavigateScreen from './src/Navigate/NavigateScreen'
-import Test from './src/Components/Test'
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { AppProvider } from "./src/context/AppState";
+import NavigateScreen from "./src/Navigate/NavigateScreen";
 
 const App = () => {
   return (
     <AppProvider>
       <View style={styles.container}>
-      <Test/>
-        <NavigateScreen/>
+        <NavigateScreen />
       </View>
     </AppProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;
 
 const styles = StyleSheet.create({
   container: {
@@ -25,4 +21,4 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     margin: 10,
   },
-})
+});
