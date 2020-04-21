@@ -1,5 +1,5 @@
 # Expense Tracker (MERN)
-> Full stack app
+> Full stack mobile app
 
 
 ```
