@@ -2,10 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { AppContext } from "../context/AppState";
 import { View, FlatList, Text, StyleSheet, Button } from "react-native";
 import Transaction from "./Transaction";
-import Balance from "./Balance";
-import IncomeExpense from "./IncomeExpense";
 
-export const TransactionList = ({ navigation }) => {
+export const TransactionList = () => {
   const { transactions, getTransaction } = useContext(AppContext);
 
   useEffect(() => {
@@ -16,13 +14,9 @@ export const TransactionList = ({ navigation }) => {
 
   return (
     <View>
-      <Balance />
-      <IncomeExpense />
-      <Button
-        title="Add transaction"
-        onPress={() => navigation.navigate("Home")}
-      />
-      <Text style={styles.history}>History</Text>
+      <View style={styles.header}>
+        <Text style={styles.history}>History</Text>
+      </View>
       <FlatList
         data={transactions}
         renderItem={({ item }) => (
@@ -38,6 +32,13 @@ const styles = StyleSheet.create({
   history: {
     marginTop: 20,
     textAlign: "center",
-    fontSize: 20,
+    fontSize: 22,
+    color: 'white'
+  },
+  header: {
+    height: 60,
+    backgroundColor: "#007de3",
+    marginTop: 12,
+    borderRadius: 20,
   },
 });

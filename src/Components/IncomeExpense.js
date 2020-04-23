@@ -11,21 +11,25 @@ const IncomeExpense = () => {
   // Income
   const income = amounts
     .filter((item) => item > 0)
-    .reduce((acc, item) => acc += item, 0)
+    .reduce((acc, item) => (acc += item), 0)
     .toFixed(2);
 
   // Expense
   const expense = (
-    amounts.filter((item) => item < 0).reduce((acc, item) => acc += item, 0) * -1
+    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
+    -1
   ).toFixed(2);
 
   return (
-    <View style={styles.amount}>
-      <View>
+    <View>
+      <View style={styles.header}>
+        <Text style={styles.budget}>Budget</Text>
+      </View>
+      <View style={styles.incomeBox}>
         <Text style={styles.text}>Income</Text>
         <Text style={styles.income}>Rs.{numberWithCommas(income)}</Text>
       </View>
-      <View>
+      <View style={styles.expenseBox}>
         <Text style={styles.text}>Expense</Text>
         <Text style={styles.expense}> Rs.{numberWithCommas(expense)}</Text>
       </View>
@@ -53,4 +57,30 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
   },
+  header: {
+    height: 60,
+    backgroundColor: "#007de3",
+    marginTop: 12,
+    borderRadius: 20,
+  },
+  budget: {
+    textAlign: "center",
+    fontSize: 22,
+    color: "white",
+    marginTop: 10,
+  },
+  incomeBox: {
+    backgroundColor: "#9cffd4",
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 50,
+    alignItems: "center",
+  },
+  expenseBox: {
+    backgroundColor: "#ff9991",
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 50,
+    alignItems: "center",
+  }
 });

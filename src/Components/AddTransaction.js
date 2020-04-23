@@ -25,12 +25,14 @@ const AddTransaction = ({ navigation }) => {
       addTransaction(newTransaction);
       setAmount(0);
       setText("");
-      navigation.navigate("TransactionList");
+      navigation.navigate("Transaction");
     }
   };
   return (
     <View style={styles.container}>
+    <View style={styles.header}>
       <Text style={styles.newTransaction}>Add New Transaction</Text>
+    </View>
       <Text style={styles.text}>Text :</Text>
       <TextInput
         autoFocus={true}
@@ -42,6 +44,7 @@ const AddTransaction = ({ navigation }) => {
       />
       <Text style={styles.text}>Amount :</Text>
       <TextInput
+        value={amount}
         style={styles.textInput}
         placeholder="expense(-100) or income(+100)"
         placeholderTextColor="grey"
@@ -61,7 +64,8 @@ const styles = StyleSheet.create({
   newTransaction: {
     textAlign: "center",
     fontSize: 20,
-    marginTop: 10,
+    marginTop: 15,
+    color: "white"
   },
   subject: {
     fontSize: 18,
@@ -80,7 +84,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
-    backgroundColor: "#3C40C6",
+    backgroundColor: "#007de3",
     padding: 10,
   },
   buttonText: {
@@ -89,5 +93,11 @@ const styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "white",
+  },
+ header: {
+    height: 60,
+    backgroundColor: "#007de3",
+    marginTop: 12,
+    borderRadius: 20,
   },
 });

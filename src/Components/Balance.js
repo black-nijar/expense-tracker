@@ -10,9 +10,12 @@ const Balance = () => {
     parseInt(transaction.amount)
   );
 
-  const total = amounts.reduce((acc, item) => acc += item, 0).toFixed(2);
+  const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.balanceText}>Balance</Text>
+      </View>
       <Text style={styles.balance}>
         Your Balance is Rs.{numberWithCommas(total)}
       </Text>
@@ -26,10 +29,22 @@ const styles = StyleSheet.create({
   balance: {
     textAlign: "center",
     fontSize: 20,
-    marginTop: 10,
+    marginTop: 50,
     marginBottom: 10,
   },
   container: {
     backgroundColor: "white",
   },
+   header: {
+    height: 60,
+    backgroundColor: "#007de3",
+    marginTop: 12,
+    borderRadius: 20,
+  },
+  balanceText: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 22,
+    marginTop: 10
+  }
 });
