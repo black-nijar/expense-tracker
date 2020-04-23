@@ -15,7 +15,7 @@ export const TransactionList = () => {
   return (
     <View>
       <View style={styles.header}>
-        <Text style={styles.history}>History</Text>
+        <Text style={styles.history}>Transaction </Text>
       </View>
       <FlatList
         data={transactions}
